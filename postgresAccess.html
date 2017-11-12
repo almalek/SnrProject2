@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Today's Date</title>
+    <a href="Read Postgres record by Key"> Read </a><p></p>
+    <a href="Update Postgres record by Key"> Update </a>
+    <script>
+
+// Replace the variables in this block with real values.
+var address = 'localhost';
+var user = 'postgres';
+var userPwd = 'postgres';
+var db = 'AlMalek';
+
+var dbUrl = 'jdbc:postgresql://' + address + '/' + db;
+
+// Read up to 1000 rows of data from the table and log them.
+function readFromTable() {
+  var conn = Jdbc.getConnection(dbUrl, user, userPwd);
+
+  var start = new Date();
+  var stmt = conn.createStatement();
+  stmt.setMaxRows(1000);
+  var results = stmt.executeQuery('SELECT * FROM logins where id = 1 ');
+
+  var numCols = results.getMetaData().getColumnCount();
+
+  while (results.next()) {
+    var rowString = '';
+    for (var col = 0; col < numCols; col++) {
+      rowString += results.getString(col + 1) + '\t';
+    }
+    Logger.log(rowString)
+  }
+
+  results.close();
+  stmt.close();
+
+  var end = new Date();
+  Logger.log('Time elapsed: %sms', end - start);
+}
+
+   </script>
+</head>
+
+<body>
+
+</body>

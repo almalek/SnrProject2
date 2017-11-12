@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="PostgreSQL" id="Project_595645f" template="Default" database="PostgreSQL" >
+	<schema name="public" catalogname="seniorproject" schemaname="public" >
+		<table name="Applicant" >
+			<column name="appID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="First Name" type="varchar" length="40" jt="12" mandatory="y" />
+			<column name="Suffix" type="varchar" length="5" decimal="0" jt="12" />
+			<column name="Gender" type="char" length="1" decimal="0" jt="1" mandatory="y" />
+			<column name="DoB" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="Marital Status" type="varchar" length="15" decimal="0" jt="12" mandatory="y" />
+			<column name="Email" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="Phone" type="char" length="12" decimal="0" jt="1" mandatory="y" />
+			<column name="Race" type="varchar" length="40" decimal="0" jt="12" />
+			<column name="Ethnicity" type="varchar" length="40" decimal="0" jt="12" />
+			<column name="addressID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Legacy Status" type="varchar" length="40" decimal="0" jt="12" />
+			<column name="TN Resident" type="char" length="1" decimal="0" jt="1" mandatory="y" />
+			<column name="csID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="programID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Previously Applied" type="char" length="1" decimal="0" jt="1" mandatory="y" />
+			<column name="Teaching License" type="char" length="1" decimal="0" jt="1" />
+			<column name="educationRecordID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<index name="appID_pk" unique="PRIMARY_KEY" >
+				<column name="appID" />
+			</index>
+			<fk name="csID_fk" to_schema="public" to_table="Citizenship" >
+				<fk_column name="csID" pk="csID" />
+			</fk>
+			<fk name="programID_fk" to_schema="public" to_table="Course of Study" >
+				<fk_column name="programID" pk="programID" />
+			</fk>
+			<fk name="addressID_fk" to_schema="public" to_table="Permanent Address" >
+				<fk_column name="addressID" pk="addressID" />
+			</fk>
+			<fk name="educationRecordID_fk" to_schema="public" to_table="Previous Education" >
+				<fk_column name="educationRecordID" pk="educationRecordID" />
+			</fk>
+		</table>
+		<table name="Citizenship" >
+			<column name="csID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Title" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<index name="Citizenship_pk" unique="PRIMARY_KEY" >
+				<column name="csID" />
+			</index>
+		</table>
+		<table name="College" >
+			<column name="collegeID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="School Code" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="Street" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="City" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="County" type="varchar" length="40" decimal="0" jt="12" />
+			<column name="State/Province" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="Zip" type="char" length="5" decimal="0" jt="1" mandatory="y" />
+			<column name="Country" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<index name="College_pk" unique="PRIMARY_KEY" >
+				<column name="collegeID" />
+			</index>
+		</table>
+		<table name="Course of Study" >
+			<column name="programID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Level" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="Discpline" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="Major" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<index name="Course of Study_pk" unique="PRIMARY_KEY" >
+				<column name="programID" />
+			</index>
+		</table>
+		<table name="Document" >
+			<column name="documentID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="appID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Type" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="File" type="bytea" decimal="0" jt="-2" mandatory="y" />
+			<index name="Document_pk" unique="PRIMARY_KEY" >
+				<column name="documentID" />
+			</index>
+			<fk name="Document_fk" to_schema="public" to_table="Applicant" >
+				<fk_column name="appID" pk="appID" />
+			</fk>
+		</table>
+		<table name="Local Address" >
+			<column name="appID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Street" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="City" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="State" type="char" length="2" decimal="0" jt="1" mandatory="y" />
+			<column name="Zip" type="char" length="5" decimal="0" jt="1" mandatory="y" />
+			<column name="County" type="varchar" length="40" decimal="0" jt="12" />
+			<fk name="appID_fk" to_schema="public" to_table="Applicant" >
+				<fk_column name="appID" pk="appID" />
+			</fk>
+		</table>
+		<table name="Permanent Address" >
+			<column name="addressID" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Street" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="City" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="State" type="char" length="2" decimal="0" jt="1" mandatory="y" />
+			<column name="Zip" type="char" length="5" decimal="0" jt="1" mandatory="y" />
+			<column name="County" type="varchar" length="40" decimal="0" jt="12" />
+			<index name="Permanent Address_pk" unique="PRIMARY_KEY" >
+				<column name="addressID" />
+			</index>
+		</table>
+		<table name="Previous Application" >
+			<column name="appID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="prevID" type="integer" length="10" decimal="0" jt="4" />
+			<column name="Year" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Semester" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<fk name="Previous Application_fk" to_schema="public" to_table="Applicant" >
+				<fk_column name="appID" pk="appID" />
+			</fk>
+		</table>
+		<table name="Previous Education" >
+			<column name="educationRecordID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="collegeID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Degree" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="Date" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<index name="Previous Education_pk" unique="PRIMARY_KEY" >
+				<column name="educationRecordID" />
+			</index>
+			<fk name="collegeID" to_schema="public" to_table="College" >
+				<fk_column name="collegeID" pk="collegeID" />
+			</fk>
+		</table>
+		<table name="Previous Last Name" >
+			<column name="appID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Last Name" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<fk name="Previous Last Name_fk" to_schema="public" to_table="Applicant" >
+				<fk_column name="appID" pk="appID" />
+			</fk>
+		</table>
+		<table name="Previous TN Address" >
+			<column name="appID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Street" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="City" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="State" type="char" length="2" decimal="0" jt="1" mandatory="y" />
+			<column name="Zip" type="char" length="5" decimal="0" jt="1" mandatory="y" />
+			<column name="County" type="varchar" length="40" decimal="0" jt="12" />
+			<fk name="Previous TN Address_fk" to_schema="public" to_table="Applicant" >
+				<fk_column name="appID" pk="appID" />
+			</fk>
+		</table>
+		<table name="References" >
+			<column name="appID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Type" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="Last Name" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="First Name" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="Organization" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="Title" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="Email" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="Ref Letter" type="bytea" decimal="0" jt="-2" mandatory="y" />
+			<fk name="Reference_fk" to_schema="public" to_table="Applicant" >
+				<fk_column name="appID" pk="appID" />
+			</fk>
+		</table>
+		<table name="SSN" >
+			<column name="appID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="SSN" type="char" length="9" decimal="0" jt="1" mandatory="y" />
+			<fk name="SSN_fk" to_schema="public" to_table="Applicant" >
+				<fk_column name="appID" pk="appID" />
+			</fk>
+		</table>
+		<table name="Teaching License" >
+			<column name="appID" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Discpline" type="varchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<fk name="Teaching Lisence_fk" to_schema="public" to_table="Applicant" >
+				<fk_column name="appID" pk="appID" />
+			</fk>
+		</table>
+	</schema>
+	<connector name="PostgreSQL" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-42.1.4.jar" driver_desc="Standard" host="localhost" port="5432" instance="seniorproject" user="postgres" passwd="YmxhZGUyNmF1Zw==" />
+	<layout name="Default Layout" id="Layout_3890d2e" show_relation="columns" >
+		<entity schema="public" name="Citizenship" color="bfd4f5" x="60" y="420" />
+		<entity schema="public" name="College" color="bfd4f5" x="585" y="45" />
+		<entity schema="public" name="Course of Study" color="bfd4f5" x="45" y="255" />
+		<entity schema="public" name="Document" color="bfd4f5" x="45" y="45" />
+		<entity schema="public" name="Local Address" color="c8f5bf" x="780" y="45" />
+		<entity schema="public" name="Previous Application" color="bfd4f5" x="195" y="420" />
+		<entity schema="public" name="Previous Education" color="bfd4f5" x="390" y="45" />
+		<entity schema="public" name="Previous Last Name" color="bfd4f5" x="390" y="285" />
+		<entity schema="public" name="SSN" color="d2bff5" x="150" y="540" />
+		<entity schema="public" name="Teaching License" color="bfd4f5" x="570" y="270" />
+		<entity schema="public" name="References" color="bfbff5" x="555" y="480" />
+		<entity schema="public" name="Previous TN Address" color="bfd4f5" x="735" y="315" />
+		<entity schema="public" name="Permanent Address" color="f5ddbf" x="360" y="495" />
+		<entity schema="public" name="Applicant" color="bfd4f5" x="195" y="45" />
+	</layout>
+	<layout name="Sample Layout with Tools" id="Layout_3cc0662" show_column_type="y" show_relation="columns" >
+		<entity schema="public" name="Citizenship" color="bfd4f5" x="60" y="525" />
+		<entity schema="public" name="College" color="bfd4f5" x="690" y="150" />
+		<entity schema="public" name="Course of Study" color="bfd4f5" x="45" y="360" />
+		<entity schema="public" name="Document" color="bfd4f5" x="45" y="150" />
+		<entity schema="public" name="Local Address" color="c8f5bf" x="945" y="150" />
+		<entity schema="public" name="Permanent Address" color="f5ddbf" x="945" y="525" />
+		<entity schema="public" name="Previous Application" color="bfd4f5" x="240" y="525" />
+		<entity schema="public" name="Previous Education" color="bfd4f5" x="465" y="150" />
+		<entity schema="public" name="Previous Last Name" color="bfd4f5" x="465" y="390" />
+		<entity schema="public" name="Previous TN Address" color="bfd4f5" x="465" y="525" />
+		<entity schema="public" name="References" color="bfbff5" x="945" y="765" />
+		<entity schema="public" name="SSN" color="d2bff5" x="45" y="765" />
+		<entity schema="public" name="Teaching License" color="bfd4f5" x="720" y="765" />
+		<entity schema="public" name="Applicant" color="bfd4f5" x="240" y="150" />
+		<callout x="240" y="75" pointer="NO" >
+			<comment><![CDATA[Double-click any table, column or foreign key to edit, right-click to start one of the tools below.
+Use the Relational Data Browse for simultaneously exploring data from multiple tables.
+All tools will be saved to project file and can be reopen.]]></comment>
+		</callout>
+		<group name="Applicant" color="ecf0f7" >
+			<entity schema="public" name="Applicant" />
+			<entity schema="public" name="Previous Education" />
+			<entity schema="public" name="Previous Last Name" />
+			<entity schema="public" name="Previous TN Address" />
+			<entity schema="public" name="Previous Application" />
+			<entity schema="public" name="Citizenship" />
+			<entity schema="public" name="College" />
+			<entity schema="public" name="Course of Study" />
+			<entity schema="public" name="Document" />
+		</group>
+		<group name="Local Address" color="eef7ec" >
+			<entity schema="public" name="Local Address" />
+		</group>
+		<group name="Permanent Address" color="f7f3ec" >
+			<entity schema="public" name="Permanent Address" />
+		</group>
+		<group name="References" color="ececf7" >
+			<entity schema="public" name="References" />
+		</group>
+		<group name="SSN" color="f0ecf7" >
+			<entity schema="public" name="SSN" />
+		</group>
+		<group name="Teaching License" color="ecf0f7" >
+			<entity schema="public" name="Teaching License" />
+		</group>
+		<script name="Sample SQL Editor" id="Editor_48453fe" language="SQL" >
+			<string><![CDATA[SELECT * 
+FROM
+	"public"."Applicant" t;]]></string>
+		</script>
+		<browser id="Browse_d75ee6" name="Sample Relational Data Browse" confirm_updates="y" >
+			<browse_table schema="public" entity="Applicant" x="20" y="18" width="400" height="300" >
+				<browse_table schema="public" entity="Document" fk="Document_fk" x="440" y="20" width="400" height="300" />
+			</browse_table>
+		</browser>
+		<query id="Query_1e9a607" name="Sample Query Builder" >
+			<query_table schema="public" name="Applicant" alias="a" x="45" y="45" >
+				<column name="appID" />
+				<column name="First Name" />
+				<column name="Suffix" />
+				<column name="Gender" />
+				<column name="DoB" />
+				<column name="Marital Status" />
+				<column name="Email" />
+				<column name="Phone" />
+				<column name="Race" />
+				<column name="Ethnicity" />
+				<column name="addressID" />
+				<column name="Legacy Status" />
+				<column name="TN Resident" />
+				<column name="csID" />
+				<column name="programID" />
+				<column name="Previously Applied" />
+				<column name="Teaching License" />
+				<column name="educationRecordID" />
+				<query_table schema="public" name="Document" alias="d" x="240" y="45" fk="Document_fk" type="Inner Join" >
+					<column name="documentID" />
+					<column name="appID" />
+					<column name="Type" />
+					<column name="File" />
+				</query_table>
+			</query_table>
+		</query>
+	</layout>
+</project>

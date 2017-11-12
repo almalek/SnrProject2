@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>TSU Graduate Admissions</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+    $(function () {
+    		$('[data-toggle="tooltip"]').tooltip()
+    	})
+    	
+    	$('#piModal').on('shown.bs.modal', function () {
+    		$('#myInput').focus()
+    	})
+      
+      $('#duModal').on('shown.bs.modal', function () {
+    		$('#myInput').focus()
+    	})
+  </script>
+  <style>
+    .card {
+      margin: 2em 0;
+      padding: 2em;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      background-color: #F5F5F5;
+      /*WhiteSmoke     */
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25), 0 8px 8px rgba(0, 0, 0, 0.22);
+    }
+
+    .card .glyphicon {
+      font-size: 4em;
+      margin-bottom: 1em;
+      padding 2em;
+    }
+
+    .card-title {
+      font-size: 1.875em;
+      text-transform: uppercase;
+    }
+
+    .card .btn {
+      text-transform: uppercase;
+    }
+
+    .card .btn:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a class="navbar-brand" href="#">WebSiteName</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active">
+            <a href="#">Home</a>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#">Page 1-1</a>
+              </li>
+              <li>
+                <a href="#">Page 1-2</a>
+              </li>
+              <li>
+                <a href="#">Page 1-3</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Page 2</a>
+          </li>
+          <li>
+            <a href="#">Page 3</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#"><span class="glyphicon glyphicon-user"></span> User Name</a>
+          </li>
+          <li>
+            <a href="login1.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section class="container-fluid">
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 35%"> </div>
+    </div>
+  </section>
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card text-center mb-3"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+          <div class="card-block">
+            <h4 class="card-title">Personal Information</h4>
+            <p class="card-text">Name, demographics, contact information &amp; more.</p>
+            <a href="pi.html" class="btn btn-primary btn-block" data-toggle="modal" data-target="#piModal" data-placement="bottom" title="Press to Edit Form">Edit Your Personal Information</a>
+          </div>
+        </div>
+      </div>
+      <!--End Card 1-->
+      <div class="col-sm-4">
+        <div class="card text-center"> <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+          <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+          <div class="card-block">
+            <h4 class="card-title">Education Background</h4>
+            <p class="card-text">Previous colleges, current degress &amp; more.</p>
+            <a href="#" class="btn btn-primary btn-block">Edit Your Educational Background</a>
+          </div>
+        </div>
+      </div>
+      <!--End Card 2-->
+      <div class="col-sm-4">
+        <div class="card text-center"> <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
+          <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+          <div class="card-block">
+            <h4 class="card-title">Document Upload</h4>
+            <p class="card-text">Unoffical transcripts/exam results, references &amp; more.</p>
+            <a href="#" class="btn btn-primary btn-block" data-target="#duModal" data-toggle="modal" data-placement="bottom" title="Press to Edit Form">Edit Your Uploaded Documents</a>
+          </div>
+        </div>
+      </div>
+      <!--End Card 3-->
+    </div>
+  </section>
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card text-center"> <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+          <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+          <div class="card-block">
+            <h4 class="card-title">Payment</h4>
+            <p class="card-text">Make payments, check grant/aid status &amp; more.</p>
+            <a href="#" class="btn btn-primary btn-block">Edit Your Financial Information</a>
+          </div>
+        </div>
+      </div>
+      <!--End Card 1-->
+      <div class="col-sm-4">
+        <div class="card text-center"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+          <div class="card-block">
+            <h4 class="card-title">Medical Records</h4>
+            <p class="card-text">Medications, allergies, shots records &amp; more.</p>
+            <a href="#" class="btn btn-primary btn-block">Edit Your medical records</a>
+          </div>
+        </div>
+      </div>
+      <!--End Card 2-->
+    </div>
+  </section>
+  <!--************************Modal*************************-->
+  <!-- Button trigger modal -->
+  <!-- Modal Personal Information-->
+  <div class="modal fade" id="piModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Personal Information</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group"> <label for="fnameInput">First Name</label>
+              <input type="text" class="form-control" id="fname" placeholder="Enter First Name"> </div>
+            <div class="form-group"> <label for="mnameInput">Middle Name</label>
+              <input type="text" class="form-control" id="mname" placeholder="Enter Middle Name"> </div>
+            <div class="form-group"> <label for="lnameInput">Last Name</label>
+              <input type="text" class="form-control" id="lname" placeholder="Enter Last Name"> </div>
+            <div class="form-group"> <label class="mr-sm-2" for="suffixSelect">Suffix</label> <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="suffixSelect">
+			<option selected="">Choose...</option>
+			<option value="1">Sr</option>
+			<option value="2">Jr</option>
+			<option value="3">II</option>
+			<option value="4">III</option>
+			<option value="5">IV</option>
+			<option value="6">V</option>
+			<option value="7">VI</option>
+			<option value="8">VII</option>
+		  </select> </div>
+            <div class="form-group"> <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> </div>
+            <div class="form-group"> <label for="phoneForm">Phone Number</label>
+              <input type="text" class="form-control bfh-phone" id="phoneNum" data-format="(ddd) ddd-dddd" placeholder="(555) 555-5555"> </div>
+            <div class="form-group"> <label for="bday" class="col-2 col-form-label">Date of Birth</label>
+              <div class="col-10">
+                <input class="form-control" type="date" value="2011-08-19" id="bdayinput"> </div>
+            </div>
+            <div class="form-group"> <label for="exampleSelect2">Race</label> <select class="form-control" id="exampleSelect2">
+	  <option>Choose...</option>
+	  <option>Alaskan Native</option>
+      <option>American Indian or Native American</option>
+      <option>Asian</option>
+      <option>Black or African American</option>
+      <option>Hawaiian Native or Pacific Islander</option>
+	  <option>White</option>
+    </select> </div>
+            <fieldset class="form-group">
+              <legend>Ethinicity</legend>
+              <div class="form-check"> <label class="form-check-label">
+			<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+			Hispanic or Latino
+		  </label> </div>
+              <div class="form-check"> <label class="form-check-label">
+			<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+			Not Hispanic or Latino
+		  </label> </div>
+              <div class="form-group"> <label for="exampleInputFile">File input</label>
+                <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small> </div>
+              <fieldset class="form-group">
+                <legend>Gender</legend>
+                <div class="form-check"> <label class="form-check-label">
+			<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+			Male
+		  </label> </div>
+                <div class="form-check"> <label class="form-check-label">
+			<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+			Female
+		  </label> </div>
+              </fieldset>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--************************End Modal PI*************************-->
+  <!--************************Modal*************************-->
+  <!-- Button trigger modal -->
+  <!-- Modal Document Upload -->
+  <div class="modal fade" id="duModal" tabindex="-1" role="dialog" aria-labelledby="DuModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Documents Upload</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group"> <label for="exampleInputFile">Academic Reference 1</label>
+            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small> </div>
+          <div class="form-group"> <label for="exampleInputFile">Academic Reference 2</label>
+            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small> </div>
+          <div class="form-group"> <label for="exampleInputFile">Unoffical Transcript</label>
+            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small> </div>
+          <div class="form-group"> <label for="exampleInputFile">Unoffical <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="suffixSelect">
+			<option selected="">Choose...</option>
+			<option value="1">GRE</option>
+			<option value="2">GMAT</option>
+			<option value="3">TOEFL</option>
+			<option value="4">IELTS</option>
+			<option value="5">ESL</option>
+			<option value="6">MAT</option>
+            </select> Exam Result
+          <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small> </label>            </div>
+          <div class="form-group"> <label for="exampleInputFile">Professional Reference 1</label>
+            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small> </div>
+          <div class="form-group"> <label for="exampleInputFile">Professional Reference 2</label>
+            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small> </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--************************End Modal DU*************************-->
+  <!--
+<nav class="navbar navbar navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+
+	  
+    </div>
+    <ul class="nav navbar-nav navbar-center">
+		<li><span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span> 2018 Tennessee State University. All Rights Reserved.
+	  </li>
+    </ul>
+  </div>
+</nav>
+-->
+</body>
+
+</html>

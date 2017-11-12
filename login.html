@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css"> </head>
+
+<body>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header"> Tennessee State University Graduate School Admissions </div>
+            <div class="card-body">
+             <script> 
+//              <form class="form-group" method="post" action="ap1.html">
+             </script>            
+                <div class="form-group"> <label>Email address</label>
+                  <input type="email" name="email" class="form-control" placeholder="Enter email"> </div>
+                <div class="form-group"> <label>Password</label>
+                  <input type="password" name="password" class="form-control" placeholder="Password"> </div>
+<script>
+                // <button type="submit" class="btn btn-primary">Login</button>
+</script>
+                <button onclick="readFromTable()">Login</button>
+                <button class="btn btn-danger">Cancel</button>
+                <p id="Driver Loading"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+// Replace the variables in this block with real values.
+
+
+// Read up to 1000 rows of data from the table and log them.
+function readFromTable() {
+
+
+
+//    com.TSUComputerScience.DriverBridge.loadDriver("org.postgresql.Driver");
+
+//    conn = com.TSUComputerScience.DriverBridge.getConnection(
+//        "jdbc:postgresql://localhost:5433/snrProject",
+//        "PostgreSQL",
+//        "PostgreSQL"
+//    );
+//    document.getElementById("Driver Loading").innerHTML = "Driver Loading";
+
+var address = 'localhost';
+var user = 'PostgreSQL';
+var userPwd = 'PostgreSQL';
+var db = 'snrProject';
+
+var dbUrl = 'jdbc:postgresql://' + address + ':5433/' + db;
+
+
+
+  var conn = Jdbc.getConnection(dbUrl, user, userPwd);
+    document.getElementById("Driver Loading").innerHTML = "Driver Loading";
+
+    window.prompt(conn,"defaultText");
+
+  var start = new Date();
+  var stmt = conn.createStatement();
+  stmt.setMaxRows(1000);
+
+  var results = stmt.executeQuery('﻿select * from college where college_code =\'180,198\'');
+
+  var numCols = results.getMetaData().getColumnCount();
+
+
+    window.open ('Ap1.html','_self',false);
+  while (results.next()) {
+    var rowString = '';
+    for (var col = 0; col < numCols; col++) {
+      rowString += results.getString(col + 1) + '\t';
+    }
+    Logger.log(rowString)
+  }
+
+  results.close();
+  stmt.close();
+
+  var end = new Date();
+  Logger.log('Time elapsed: %sms', end - start);
+
+    document.getElementById("demo").innerHTML = "Hello World";
+
+}
+
+  </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+
+</html>
